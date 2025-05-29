@@ -1,0 +1,42 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Samyati Energies{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+
+
+<header>
+  <div class="navbar">
+    <a href="{% url 'home' %}">
+      <img src="{% static 'images/logo.png' %}" alt="Samyati Energies Logo" class="logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'products' %}">Products</a></li>
+      <li><a href="{% url 'why_lithium' %}">Why Lithium?</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Samyati Energies</p>
+    </footer>
+
+</body>
+</html>
