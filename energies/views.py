@@ -9,6 +9,8 @@ def products(request):
 
 def why_lithium(request):
     return render(request, 'energies/why_lithium.html')
+def about(request):
+    return render(request, 'energies/about.html')
 
 def contact_view(request):
     if request.method == 'POST':

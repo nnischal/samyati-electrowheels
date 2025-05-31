@@ -1,13 +1,75 @@
 {% extends 'energies/base.html' %}
+{% load static %}
 
-{% block title %}Products{% endblock %}
+{% block title %}Products | Samyati Energies{% endblock %}
 
 {% block content %}
-<h2>Our Products</h2>
-<ul>
-    <li>Lithium-ion Battery Pack - Model A</li>
-    <li>Lithium-ion Battery Pack - Model B</li>
-    <li>Battery Management System (BMS)</li>
-    <li>Custom Battery Solutions for E-rickshaws</li>
-</ul>
-{% endblock %}
+<section class="products-section">
+  <h2 class="section-title">Our Battery Solutions</h2>
+
+  <div class="product-grid">
+
+    <div class="product-card">
+      <div class="product-image-container">
+        <img src="{% static 'images/model-a.jpg' %}" alt="Model A Battery" class="product-image" loading="lazy">
+      </div>
+      <div class="product-content">
+        <h3>Model A Lithium-ion Battery</h3>
+        <p>Ideal for standard e-rickshaws, Model A offers high energy density, long life cycle, and fast charging capabilities to keep your fleet running efficiently.</p>
+      </div>
+    </div>
+
+    <div class="product-card reverse">
+      <div class="product-image-container">
+        <img src="{% static 'images/model-a.jpg' %}" alt="Model B Battery" class="product-image" loading="lazy">
+      </div>
+      <div class="product-content">
+        <h3>Model B Heavy-Duty Battery Pack</h3>
+        <p>Designed for extended use and tough terrain, Model B provides extra capacity and enhanced safety with a rugged build quality.</p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image-container">
+        <img src="{% static 'images/bms.png' %}" alt="Battery Management System" class="product-image" loading="lazy">
+      </div>
+      <div class="product-content">
+        <h3>Battery Management System (BMS)</h3>
+        <p>Our smart BMS ensures your battery packs operate safely and efficiently with features like overcharge protection, temperature control, and real-time monitoring.</p>
+      </div>
+    </div>
+
+    <div class="product-card reverse">
+      <div class="product-image-container">
+        <img src="{% static 'images/custom.jpg' %}" alt="Custom Battery Solutions" class="product-image" loading="lazy">
+      </div>
+      <div class="product-content">
+        <h3>Custom Battery Solutions</h3>
+        <p>We offer tailored lithium-ion battery packs to meet your unique vehicle or power requirement. Let us build what fits your need precisely.</p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image-container">
+        <img src="{% static 'images/repair-battery.jpg' %}" alt="Battery Repair" class="product-image" loading="lazy">
+      </div>
+      <div class="product-content">
+        <h3>Battery Repair Services</h3>
+        <p>Have a damaged or aging battery? Our technicians repair, recondition, and upgrade lithium-ion battery packs to extend their life and performance.</p>
+      </div>
+    </div>
+
+    <div class="product-card reverse">
+      <div class="product-image-container">
+        <img src="{% static 'images/smart-battery-pack.png' %}" alt="Smart Battery Packs" class="product-image" loading="lazy">
+      </div>
+      <div class="product-content">
+        <h3>Smart Battery Packs with GPS</h3>
+        <p>Our advanced packs come with built-in GPS tracking, diagnostics, and app integration to give you complete control and visibility over your power systems.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  {% endblock %}

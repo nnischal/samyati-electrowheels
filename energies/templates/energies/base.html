@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Samyati Energies{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
@@ -24,6 +25,7 @@
       <li><a href="{% url 'home' %}">Home</a></li>
       <li><a href="{% url 'products' %}">Products</a></li>
       <li><a href="{% url 'why_lithium' %}">Why Lithium?</a></li>
+      <li><a href="{% url 'about' %}">About Us</a></li>
       <li><a href="{% url 'contact' %}">Contact</a></li>
     </ul>
   </div>
@@ -35,8 +37,28 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Samyati Energies</p>
-    </footer>
+      <div class="footer-content">
+        <img src="{% static 'images/logo.png' %}" alt="Company Logo" class="footer-logo">
+        <p class="footer-text">Empowering E-mobility with safe, long-lasting lithium-ion batteries in Nepal and beyond.</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/samyatielectrowheels" target="_blank" title="Facebook" aria-label="Facebook" class="facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://wa.me/9779805381210" target="_blank" title="WhatsApp" aria-label="WhatsApp" class="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" title="LinkedIn" aria-label="LinkedIn" class="linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        </div>
+    
+
+
+    <div class="footer-bottom">
+      &copy; 2025 Samyati Energies. All rights reserved.
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
