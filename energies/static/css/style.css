@@ -27,6 +27,22 @@ body {
   line-height: 1.6;
 }
 
+/* Developed by */
+.developer-credit {
+  font-size: 14px;
+  color: #888;
+}
+
+.developer-credit a {
+  color: #888;
+  text-decoration: none;
+}
+
+.developer-credit a:hover {
+  text-decoration: underline;
+}
+
+
 /* Navbar*/
 
 .navbar {
