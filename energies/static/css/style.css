@@ -631,6 +631,107 @@ main {
   padding: 0 15px;
 }
 
+/* How it started */
+.about-story-section {
+  display: flex;
+  flex-wrap: nowrap; /* no wrap to keep side by side */
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-gap);
+  margin: 50px auto;
+  padding: 40px 20px;
+  background: linear-gradient(to right, var(--color-bg-gradient-start), var(--color-bg-gradient-end));
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 25px var(--shadow-light);
+  max-width: 1200px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  will-change: box-shadow, transform;
+}
+
+@media (max-width: 900px) {
+  .about-story-section {
+    flex-wrap: wrap; /* wrap on smaller screens */
+  }
+}
+
+.story-text {
+  flex: 1 1 55%; /* take 55% of width */
+  font-size: clamp(1rem, 1vw + 0.5rem, 1.1rem);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  animation: fadeUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: opacity, transform;
+}
+
+.story-image {
+  flex: 1 1 400px; 
+  text-align: center;
+  animation: slideInLeft 1s ease forwards;;
+  will-change: opacity, transform;
+  overflow: hidden; 
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+  cursor: pointer;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.story-image img {
+  width: 100%;
+  max-width: 100%; /* ensure image fills container */
+  border-radius: 15px;
+  box-shadow: 0 6px 20px var(--shadow-md);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.story-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+/* Animations */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-story-section {
+    flex-direction: column;
+  }
+  .story-image, .story-text {
+    flex: unset;
+  }
+  .story-image {
+    margin-bottom: 20px;
+  }
+}
+
+
+
+
+
 /* Responsive Enhancements */
 @media (max-width: 768px) {
   .about-hero h1 {

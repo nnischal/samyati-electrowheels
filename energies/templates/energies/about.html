@@ -1,4 +1,5 @@
 {% extends 'energies/base.html' %}
+{% load static %}
 
 {% block title %}About Us | Samyati Energies{% endblock %}
 
@@ -22,6 +23,48 @@
       electric rickshaws and light EVs.
     </p>
   </div>
+
+<div class="about-story-section">
+  <div class="story-text fade-in-slide">
+    <h2>📘 Our Journey Began with a Dream</h2>
+    
+    <p>
+      Samyati Energies was born out of an inspiring final year project by its founders, <strong>Aditya Acharya & Risav Gartaula</strong>, at 
+      <strong>Thapathali Campus, Tribhuvan University</strong>, where they studied Automobile Engineering.
+      Driven by curiosity and a passion for innovation, the team set out to build a fully functional 
+      <strong>electric bike (EV bike)</strong>—a bold step toward clean mobility in Nepal. Their successful project 
+      marked the beginning of a much larger vision: to accelerate the shift toward eco-friendly 
+      transportation across the nation.
+    </p>
+    <p>
+      What began in a university lab is now a real-world mission—to deliver advanced lithium-ion battery 
+      solutions that empower Nepal’s electric future.
+    </p>
+  </div>
+  <div class="story-image fade-in-slide">
+    <img src="{% static 'images/ev-project-campus.jpg' %}" alt="EV Bike Project by Founders">
+  </div>
+  
+</div>
+
+<!-- New separate div for the petrol to EV conversion -->
+<div class="about-story-section fade-in-slide">
+  <div class="story-image">
+    <img src="{% static 'images/ev-project-campus.jpg' %}" alt="Petrol to Electric Bike Conversion">
+  </div>
+  <div class="story-text">
+    <h3>🔧 From Petrol to Electric</h3>
+    <p>
+      In addition to their groundbreaking EV bike project, the founders collaborated with <strong>Itahari Sub-Metropolitan City</strong> 
+      to convert two petrol-engine bikes into electric vehicles. These converted bikes showcased impressive performance, achieving 
+      an average range of 80 kilometers on a full charge. This milestone further demonstrated their commitment to advancing sustainable transportation solutions across Nepal.
+    </p>
+  </div>
+</div>
+
+
+
+
 
   <div class="about-core">
     <div class="about-block">
@@ -49,11 +92,6 @@
     </div>
   </div>
 
-  {% comment %} <div class="about-gallery">
-    <img src="{% static 'images/factory.jpg' %}" alt="Factory" />
-    <img src="{% static 'images/production.jpg' %}" alt="Battery Production" />
-    <img src="{% static 'images/team.jpg' %}" alt="Team at Work" />
-  </div> {% endcomment %}
 
   <div class="about-impact">
     <h2>Why Choose Samyati Energies?</h2>
@@ -63,4 +101,7 @@
     </p>
   </div>
 </section>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/index.js' %}"></script>
 {% endblock %}
