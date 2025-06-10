@@ -27,6 +27,105 @@ body {
   line-height: 1.6;
 }
 
+/* Common Styles */
+.messenger-float,
+.callnow-float,
+.whatsapp-float {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+/* Left: Messenger */
+.messenger-float {
+  left: 20px;
+  bottom: 20px;
+  background-color: #0084FF;
+}
+
+/* Right: WhatsApp */
+.whatsapp-float {
+  right: 20px;
+  bottom: 20px;
+  background-color: #25D366;
+}
+
+/* Right Above WhatsApp: Call Now */
+.callnow-float {
+  right: 20px;
+  bottom: 90px; /* 20px WhatsApp + 55px icon + 15px spacing */
+  background-color: #ff5722;
+}
+
+/* Icon Sizes */
+.messenger-float img,
+.callnow-float img,
+.whatsapp-float img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Hover effect (Pulse) */
+.messenger-float:hover,
+.callnow-float:hover,
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  animation: pulse 1.2s infinite;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .messenger-float,
+  .callnow-float,
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+  }
+
+  .messenger-float {
+    left: 15px;
+    bottom: 15px;
+  }
+
+  .whatsapp-float {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .callnow-float {
+    right: 15px;
+    bottom: 80px;
+  }
+
+  .messenger-float img,
+  .callnow-float img,
+  .whatsapp-float img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
 /* Developed by */
 .developer-credit {
   font-size: 14px;
@@ -1036,6 +1135,21 @@ footer {
 
 .reach-us p strong {
   color: #007acc;
+}
+
+.contact-link {
+  color: inherit;
+  text-decoration: none !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.contact-link:hover {
+  color: #007BFF;
+  border-bottom: 2px solid #007BFF;
+  cursor: pointer;
+  text-decoration: none !important;
 }
 
 /* Map Container */
