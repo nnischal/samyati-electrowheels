@@ -1,3 +1,4 @@
+// Icon toggling functionality
 document.addEventListener('DOMContentLoaded', () => {
   const observerOptions = {
     root: null, // viewport
@@ -18,3 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 });
+// Hamburger menu functionality 
+document.addEventListener('DOMContentLoaded', function () {
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  const closeBtn = document.getElementById('closeBtn');
+
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.add('active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+  });
+});
+

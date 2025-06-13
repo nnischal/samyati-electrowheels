@@ -7,6 +7,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>{% block title %}Samyati Energies{% endblock %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Standard favicon -->
@@ -43,17 +45,40 @@
 
 <header>
   <div class="navbar">
-    <a href="{% url 'home' %}">
-      <img src="{% static 'images/logo.png' %}" alt="Samyati Energies Logo" class="logo">
-    </a>
+    
+      <a href="{% url 'home' %}">
+        <img src="{% static 'images/logo.png' %}" alt="Samyati Energies Logo" class="logo">
+      </a>
+    
     <ul class="nav-links">
-      <li><a href="{% url 'home' %}">Home</a></li>
-      <li><a href="{% url 'products' %}">Products</a></li>
-      <li><a href="{% url 'why_lithium' %}">Why Lithium?</a></li>
-      <li><a href="{% url 'about' %}">About Us</a></li>
-      <li><a href="{% url 'contact' %}">Contact</a></li>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'products' %}">Products</a></li>
+        <li><a href="{% url 'why_lithium' %}">Why Lithium?</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
     </ul>
+
+    <!-- Hamburger / Close Icon -->
+    
+      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    
   </div>
+
+    <!-- Fullscreen Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav">
+      <button class="close-btn" id="closeBtn" aria-label="Close Menu">&times;</button>
+      <ul class="mobile-nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'products' %}">Products</a></li>
+        <li><a href="{% url 'why_lithium' %}">Why Lithium?</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+    </div>
 </header>
 
 
@@ -61,44 +86,67 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer>
-      <div class="footer-content">
-        <img src="{% static 'images/logo.png' %}" alt="Company Logo" class="footer-logo">
-        <p class="footer-text">Empowering E-mobility with safe, long-lasting lithium-ion batteries in Nepal and beyond.</p>
-      <div class="social-icons">
-        <a href="https://www.facebook.com/samyatielectrowheels" target="_blank" title="Facebook" aria-label="Facebook" class="facebook">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://wa.me/9779805381210" target="_blank" title="WhatsApp" aria-label="WhatsApp" class="whatsapp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-
-
-      </div>
+<footer>
+  <div class="footer-content-columns">
     
-
-
-    <div class="footer-bottom">
-      &copy; 2025 Samyati Energies. All rights reserved.<br>
-      <span class="developer-credit">Developed by <a href="https://github.com/nnischal" target="_blank">Nischal Niraula</a></span>
+    <!-- Left Column: Logo + Description -->
+    <div class="footer-logo-text">
+      <img src="{% static 'images/logo.png' %}" alt="Company Logo" class="footer-logo">
+      <p class="footer-text">
+        Empowering E-mobility with safe, long-lasting lithium-ion batteries in Nepal and beyond.
+      </p>
     </div>
 
+    <!-- Middle Column: Quick Links -->
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'products' %}">Products</a></li>
+        <li><a href="{% url 'why_lithium' %}">Why Lithium?</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Right Column: Social Links -->
+    <div class="footer-column">
+      <h4>Connect With Us</h4>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/samyatielectrowheels" class="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/9779805381210" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    &copy; 2025 Samyati Energies. All rights reserved.<br>
+    <span class="developer-credit">
+      Developed by <a href="https://wa.me/9779862230712" target="_blank">Nischal Niraula</a>
+    </span>
   </div>
 </footer>
-{% block scripts %}{% endblock %}
-<!-- Messenger Icon (Left) -->
-<a href="https://m.me/samyatielectrowheels" target="_blank" class="messenger-float">
-  <img src="{% static 'images/messenger-icon.png' %}" alt="Messenger Icon">
-</a>
 
-<!-- Call Now (above WhatsApp, right side) -->
-<a href="tel:+9779805381210" class="callnow-float" title="Call Now">
-  <img src="{% static 'images/phone-icon.png' %}" alt="Call Icon">
-</a>
+{% block scripts %}
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}
+<!-- Floating Buttons Wrapper -->
 
-<!-- WhatsApp Button (Right) -->
-<a href="https://wa.me/9779805381210" target="_blank" class="whatsapp-float">
-  <img src="{% static 'images/whatsapp-icon.png' %}" alt="WhatsApp Icon">
-</a>
+<!-- Messenger (Left) -->
+<div class="fab-container fab-left">
+  <a href="https://m.me/samyatielectrowheels" target="_blank" class="fab-button" style="background-color: #0084FF;">
+    <img src="{% static 'images/messenger-icon.png' %}" alt="Messenger Icon">
+  </a>
+</div>
+
+<!-- Call + WhatsApp (Right) -->
+<div class="fab-container fab-right">
+  <a href="tel:+9779805381210" class="fab-button" title="Call Now" style="background-color: #ff5722;">
+    <img src="{% static 'images/phone-icon.png' %}" alt="Call Icon">
+  </a>
+  <a href="https://wa.me/9779805381210" target="_blank" class="fab-button" style="background-color: #25D366;">
+    <img src="{% static 'images/whatsapp-icon.png' %}" alt="WhatsApp Icon">
+  </a>
+</div>
 </body>
 </html>

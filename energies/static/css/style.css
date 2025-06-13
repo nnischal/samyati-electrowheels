@@ -27,58 +27,73 @@ body {
   line-height: 1.6;
 }
 
-/* Common Styles */
-.messenger-float,
-.callnow-float,
-.whatsapp-float {
+/* Floating Action Buttons */
+.fab-container {
   position: fixed;
+  z-index: 1300;
+}
+
+/* Left Side - Messenger */
+.fab-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+/* Right Side Buttons */
+.fab-right {
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  bottom: 20px;
+}
+
+/* Shared styles */
+.fab-button {
   width: 55px;
   height: 55px;
   border-radius: 50%;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 1000;
 }
 
-/* Left: Messenger */
-.messenger-float {
-  left: 20px;
-  bottom: 20px;
-  background-color: #0084FF;
-}
-
-/* Right: WhatsApp */
-.whatsapp-float {
-  right: 20px;
-  bottom: 20px;
-  background-color: #25D366;
-}
-
-/* Right Above WhatsApp: Call Now */
-.callnow-float {
-  right: 20px;
-  bottom: 90px; /* 20px WhatsApp + 55px icon + 15px spacing */
-  background-color: #ff5722;
-}
-
-/* Icon Sizes */
-.messenger-float img,
-.callnow-float img,
-.whatsapp-float img {
+.fab-button img {
   width: 30px;
   height: 30px;
 }
 
-/* Hover effect (Pulse) */
-.messenger-float:hover,
-.callnow-float:hover,
-.whatsapp-float:hover {
+.fab-button:hover {
   transform: scale(1.1);
   animation: pulse 1.2s infinite;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .fab-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .fab-button img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .fab-left {
+    left: 15px;
+    bottom: 15px;
+  }
+
+  .fab-right {
+    right: 15px;
+    bottom: 15px;
+    gap: 12px;
+  }
 }
 
 /* Pulse Animation */
@@ -126,44 +141,33 @@ body {
   }
 }
 
-/* Developed by */
-.developer-credit {
-  font-size: 14px;
-  color: #888;
-}
-
-.developer-credit a {
-  color: #888;
-  text-decoration: none;
-}
-
-.developer-credit a:hover {
-  text-decoration: underline;
-}
-
 
 /* Navbar*/
 
 .navbar {
-  background: linear-gradient(90deg, var(--blue-dark), var(--blue));
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
-  box-shadow: var(--shadow-dark);
+  padding: 15px 25px;
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue));
   position: sticky;
   top: 0;
   z-index: 1000;
   border-bottom: 2px solid var(--blue-light);
-  transition: background 0.4s ease;
 }
 
+
+
 .logo {
-  height: auto;
   width: 60px;
-  margin-bottom: 15px;
+  height: auto;
   filter: brightness(0) invert(1);
-  
+  display: block;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
 }
 
 .logo:hover {
@@ -231,6 +235,103 @@ body {
   background-color: #00a3e0;
   color: var(--white);
   transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  .navbar .logo {
+    width: 45px;
+  }
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items:center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+/* Fullscreen Mobile Menu */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh; width: 100vw;
+  background-color: rgba(0,0,0,0.8);
+  display: flex; /* changed from none to flex */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-100%);
+  z-index: 1200;
+  overflow-y: auto;
+  pointer-events: none; /* prevent interaction when hidden */
+  opacity: 0; /* hide visually */
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.mobile-nav-overlay.active {
+  transform: translateY(0);
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.mobile-nav-links li {
+  margin: 20px 0;
+}
+
+.mobile-nav-links li a {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.mobile-nav-links li a:hover {
+  color: var(--blue-light);
+}
+
+/* Show hamburger on mobile */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+  }
 }
 
 /* Main Content */
@@ -422,8 +523,9 @@ main {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(0, 73, 146, 0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   animation: fadeInUp 0.9s ease forwards;
+  cursor: pointer;
 }
 
 .product-card.reverse {
@@ -451,6 +553,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition: color 0.3s ease;
 }
 
 .product-content h3 {
@@ -467,10 +570,18 @@ main {
 
 /* Hover Effect */
 .product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 73, 146, 0.2);
+  transform: scale(1.02) translateY(-4px);
+  background-color: #f0f8ff; /* subtle background tint */
+  box-shadow: 0 16px 35px rgba(0, 73, 146, 0.25);
 }
 
+.product-image {
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
 /* Animations */
 @keyframes fadeInUp {
   0% {
@@ -515,7 +626,6 @@ main {
 
   .product-image {
     height: auto;
-    aspect-ratio: unset;
   }
 }
 
@@ -869,68 +979,105 @@ main {
 
 
 footer {
-  background-color: #121212; /* very dark background */
-  color: #eee;
-  padding: 30px 20px;
-  text-align: center;
+  background-color: #111;
+  color: var(--footer-text);
+  padding: 40px 20px 30px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  user-select: none;
 }
 
-.footer-content {
-  max-width: 600px;
+.footer-content-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1200px;
   margin: auto;
+  padding: 20px 10px;
 }
 
-.footer-logo {
-  width: 140px;
-  height: auto;
-  margin-bottom: 15px;
-  filter: brightness(0) invert(1); /* if your logo is dark, this makes it white */
+.footer-column {
+  flex: 1;
+  min-width: 180px;
 }
 
-.footer-text {
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 25px;
-  color: #ccc;
+.footer-column h4 {
+  margin-bottom: 1rem;
+  color: var(--footer-accent);
+  font-size: 1.1rem;
 }
 
-/* Social Icons */
-.social-icons a {
-  background-color: #222;   /* Neutral dark background */
-  border-radius: 50%;
-  height: 45px;
-  width: 45px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  text-decoration: none;    /* Remove underline */
-  transition: transform 0.3s ease, color 0.3s ease;
-  cursor: pointer;
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.social-icons a i {
-  font-size: 1.8rem;
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: var(--footer-muted);
   transition: color 0.3s ease;
 }
 
-.footer-socials a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 56px;            
-  width: 56px;
-  border-radius: 50%;
-  color: white;
-  font-size: 1.8rem;       
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  
-  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
-  transform-origin: center;
-  background-color: #444;  
+.footer-column ul li a:hover {
+  color: var(--footer-accent);
 }
+
+
+/* Logo + Text Group */
+.footer-logo-text {
+  display: flex;
+  align-items: center;
+  flex: 2;
+  min-width: 250px;
+  gap: 15px;
+}
+
+.footer-logo {
+  width: 90px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.footer-text {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  max-width: 300px;
+}
+
+.social-icons a {
+  margin-right: 12px;
+  font-size: 1.5rem;
+  color: var(--footer-muted);
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--footer-accent);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--footer-muted);
+  margin-top: 30px;
+}
+
+.developer-credit a {
+  color: var(--footer-muted);
+  text-decoration: none;
+}
+
+.developer-credit a:hover {
+  text-decoration: underline;
+  color: var(--footer-accent);
+}
+
 
 /* Brand icon colors */
 .social-icons a.facebook i {
@@ -948,39 +1095,38 @@ footer {
 /* Hover effect */
 .social-icons a:hover {
   transform: scale(1.3);
-  text-decoration: none;  /* Just to be safe */
+  text-decoration: none; 
 }
 
 .social-icons a:hover i {
   color: white;
 }
 
-/* Bottom text */
-.footer-bottom {
-  font-size: 0.85rem;
-  color: var(--footer-muted);
-  justify-content: center;
-  margin-top: 10px;
-  
 
-}
 
 
 
 /* Responsive */
-@media (max-width: 480px) {
-  .social-icons a {
-    height: 48px;
-    width: 48px;
-    margin: 0 12px;
+@media (max-width: 768px) {
+  .footer-content-columns {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
   }
 
-  .footer-logo {
-    width: 110px;
+  .footer-logo-text {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .footer-text {
-    font-size: 0.9rem;
+    max-width: 100%;
+  }
+
+  .footer-column {
+    width: 100%;
   }
 }
 
@@ -1190,9 +1336,10 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
   }
 
   .nav-links {
